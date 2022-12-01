@@ -5,17 +5,20 @@
 
 ## Description
 
-Game's purpose and description
+Save people from zombies, without crashing with a Zombie
 
 ## User stories MVP
 
 Minimum user stories:
 
-- User can ...
+- User can save people from zombies
+- User can choose the avatar
 
 ## User stories Backlog
 
-- User can ...
+- User can move to the right, left, up and down
+- User can lose their live crashing with a zombie
+- User can win if arrives to the door with all people save
 
 ## File structure
 

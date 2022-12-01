@@ -1,14 +1,19 @@
+  #avatar-page,#canvas-Game {
+  background-color: skyblue;
+}
+
 * {
   margin: 0;
   padding: 0;
 }
-
 /* Basic styles, change according to your style */
 
 #start-page,
-#lose-page {
+#lose-page,
+#avatar-page,
+#game-page {
   height: 600px;
-  width: 1000px;
+  width: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,19 +21,13 @@
   text-align: center;
   margin: 0 auto;
   border: 1px solid black;
-  margin-top: 30px;
+  margin-top: 100px;
 }
 
-#lose-page {
+#lose-page,
+#avatar-page,
+#game-page {
   display: none;
-}
-
-canvas {
-  border: 1px solid black;
-  display: block;
-  margin: 0 auto;
-  margin-top: 30px;
-  margin-bottom: 50px;
 }
 
 /* Auxiliar classes */
@@ -40,3 +39,44 @@ canvas {
 .shown {
   display: flex;
 }
+
+
+/*BORDER AVATAR & BACKGROUND*/
+
+#killer_Andrea,#killer_Sally,#killer_Andrea_image,#killer_Sally_image,
+#background_1_image, #background_2_image, #background_3_image, #background_4_image, #background_5_image, #background_6_image,#background_1,#background_2,#background_3,#background_4,#background_5,#background_6{ 
+
+  border-radius: 50px;
+}
+
+#killer_Andrea,#killer_Sally{
+  margin: 0px 30px 50px 30px;
+  height: 160px;
+}
+
+#killer_Andrea_image,#killer_Sally_image{
+  height: 150px;
+  width: 250px;
+}
+
+#killer_Andrea_image:hover,#killer_Sally_image:hover,#background_1_image:hover, #background_2_image:hover, #background_3_image:hover, #background_4_image:hover, #background_5_image:hover, #background_6_image:hover{
+  border: 5px solid rgb(46, 95, 185);
+}
+
+.active_border{
+  border: 5px solid rgb(46, 95, 185);
+}
+
+#background_1_image, #background_2_image, #background_3_image, #background_4_image, #background_5_image, #background_6_image{
+  width: 200px;
+  height: 100px;
+  object-fit: cover;
+}
+
+#background_1,#background_2,#background_3,#background_4,#background_5,#background_6{
+  margin: 0px 15px 30px 15px;
+  width: 200px;
+  height: 100px;
+  border: 0px
+}
+
