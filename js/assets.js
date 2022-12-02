@@ -1,19 +1,6 @@
-function chooseAvatar () { 
-    // when onclick boton avatar - choose avatar
-}
-// const arrayy =[1,2,3,2,21,2]
-// // console.log(document.getElementsByClassName("no_active_border"))
-// // console.log(document.getElementsByClassName("active_border"))
-
-// const non_active = document.getElementsByClassName('no_active_border')
-// (...non_active).forEach(item => console.log(item))
-
-
 //KILLERS - AVATARS
-
-let avatar = []
+let avatar
 let avatarImg = new Image()
-
 
 const killerAndrea = {
     name:'Andrea',
@@ -33,10 +20,16 @@ const killerSally = {
     img:'/images/KILLERS AVATAR/craig-mullins-michone-idle NO BACKGROUND cut.gif'
 }
 
-//BACKGROUNDS
+avatar = killerAndrea
+avatarImg.src = killerAndrea.img
 
-let world = []
+//BACKGROUNDS
+let world
 let worldImg = new Image()
 
 // console.log(backgroundsize.naturalHeight)
 // console.log(backgroundsize.naturalWidth)
+
+//ZOMBIES
+
+const name 

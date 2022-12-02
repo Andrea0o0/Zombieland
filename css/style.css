@@ -44,7 +44,7 @@
 /*BORDER AVATAR & BACKGROUND*/
 
 #killer_Andrea,#killer_Sally,#killer_Andrea_image,#killer_Sally_image,
-#background_1_image, #background_2_image, #background_3_image, #background_4_image, #background_5_image, #background_6_image,#background_1,#background_2,#background_3,#background_4,#background_5,#background_6{ 
+#background_1_image, #background_2_image, #background_3_image, #background_4_image, #background_5_image, #background_6_image, #background_7_image, #background_8_image,#background_1,#background_2,#background_3,#background_4,#background_5,#background_6,#background_7,#background_8{ 
 
   border-radius: 50px;
 }
@@ -52,6 +52,7 @@
 #killer_Andrea,#killer_Sally{
   margin: 0px 30px 50px 30px;
   height: 160px;
+  border: 0px;
 }
 
 #killer_Andrea_image,#killer_Sally_image{
@@ -59,24 +60,28 @@
   width: 250px;
 }
 
-#killer_Andrea_image:hover,#killer_Sally_image:hover,#background_1_image:hover, #background_2_image:hover, #background_3_image:hover, #background_4_image:hover, #background_5_image:hover, #background_6_image:hover{
+/* #killer_Andrea_image:hover,#killer_Sally_image:hover,#background_1_image:hover, #background_2_image:hover, #background_3_image:hover, #background_4_image:hover, #background_5_image:hover, #background_6_image:hover{
   border: 5px solid rgb(46, 95, 185);
-}
+} */
 
 .active_border{
   border: 5px solid rgb(46, 95, 185);
 }
 
-#background_1_image, #background_2_image, #background_3_image, #background_4_image, #background_5_image, #background_6_image{
-  width: 200px;
-  height: 100px;
+.no_active_border{
+  border:0px;
+}
+
+#background_1_image, #background_2_image, #background_3_image, #background_4_image, #background_5_image, #background_6_image,#background_7_image, #background_8_image{
+  width: 150px;
+  height: 80px;
   object-fit: cover;
 }
 
-#background_1,#background_2,#background_3,#background_4,#background_5,#background_6{
-  margin: 0px 15px 30px 15px;
-  width: 200px;
-  height: 100px;
-  border: 0px
+#background_1,#background_2,#background_3,#background_4,#background_5,#background_6,#background_7,#background_8{
+  margin: 0px 10px 30px 10px;
+  width: 150px;
+  height: 80px;
+  border: 0px;
 }
 

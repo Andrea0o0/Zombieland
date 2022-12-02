@@ -1,10 +1,16 @@
 
 class Game {
-    constructor(ctx,avatar,world) {
-        console.log(world)
+    constructor(ctx,avatar,world,zombie) {
         this.ctx = ctx
         this.avatar = new Player(avatar.name,avatar.x,avatar.y,avatar.width,avatar.height)
         this.world = new World(0,0,world.width)
+    }
+
+    _generateZombies(){
+        // Generate new zombies 
+        this.zombie = new Zombie();
+        zombieImg.src = zombie.img
+            //Apply efects
     }
     
     _assignControls(){
@@ -29,7 +35,7 @@ class Game {
     }
 
     _drawAvatar() {
-        this.ctx.drawImage(this.world.image,0,0,canvasGame.width,canvasGame.height,0,0,((canvasGame.width/this.world.width)*this.world.width),600)
+        this.ctx.drawImage(this.world.image,0,0,canvasGame.width,canvasGame.height,0,0,((canvasGame.width/this.world.width)*this.world.width),650)
         this.ctx.drawImage(this.avatar.image,this.avatar.x,this.avatar.y,this.avatar.width,this.avatar.height)
     }
 
