@@ -35,7 +35,7 @@ const zombie =
     {
         name:"BigZombie",
         x:1450,
-        y:650-80,
+        y:650-180,
         width:200,
         height:180,
         img:"/images/ZOMBIES/craig-mullins-zombie-dog-idle NO BACKGROUND.gif",

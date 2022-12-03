@@ -6,6 +6,7 @@ class Game {
         this.zombies = []
         this.howmany_zombies = 0
         this.zombie = new Zombie(zombie.x,zombie.y,zombie.width,zombie.height)
+        this.bullets = []
         // Generate new zombies 
         // this.totalZombies = []
         // for(let i=0;i<n_zombies.value;i++){
@@ -44,6 +45,10 @@ class Game {
                 this.avatar.moveUp()
                 movement += 'U'
                 break
+            case 'Enter':
+                const newbullet = new Bullet((this.avatar.x+this.avatar.width),this.avatar.y+130)
+                this.bullets.push(newbullet)
+                break
             default:
                 break
             }
@@ -56,8 +61,24 @@ class Game {
             gamePage.style = 'display:none'
             losePage.style = 'display:flex'
             }
+        
+        this.bullets.forEach((bullet) => {
+        if((this.zombie.x<bullet.x + bullet.width&&bullet.x<this.zombie.x + this.zombie.width)&&(this.zombie.y<bullet.y + bullet.height&&bullet.y<this.zombie.y + this.zombie.height)){
+            gamePage.style = 'display:none'
+            winPage.style = 'display:flex'
+        }})
+            
 
         }
+
+    _drawBullets(){
+        console.log(this.bullets)
+        this.bullets.forEach((bullet) => {
+            bullet._shoot()
+            this.ctx.fillStyle = 'black';
+            this.ctx.fillRect(bullet.x,bullet.y,bullet.width,bullet.height) 
+        })
+    }
 
     _drawAvatar() {
         this.ctx.drawImage(this.world.image,0,0,canvasGame.width,canvasGame.height,0,0,((canvasGame.width/this.world.width)*this.world.width),650)
@@ -78,6 +99,7 @@ class Game {
         this._drawAvatar()
         this._drawZombies()
         this._checkCollisions()
+        this._drawBullets()
         if(this.avatar.x+this.avatar.width>=canvasGame.width){
             gamePage.style = 'display:none'
             winPage.style = 'display:flex'
