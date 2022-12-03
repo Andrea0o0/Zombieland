@@ -26,6 +26,7 @@ class Game {
 
     _drawZombies(){
         this.ctx.drawImage(this.zombies[0].image,this.zombies[0].x,this.zombies[0].y,this.zombies[0].width,this.zombies[0].height)
+        console.log(this.zombies[0].x)
     }
     
     _assignControls(){
