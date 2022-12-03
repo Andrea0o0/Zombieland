@@ -58,8 +58,9 @@ class Game {
     _checkCollisions(){
 
         if((this.zombie.x<this.avatar.x + this.avatar.width&&this.avatar.x<this.zombie.x + this.zombie.width)&&(this.zombie.y<this.avatar.y + this.avatar.height&&this.avatar.y<this.zombie.y + this.zombie.height)){
-            gamePage.style = 'display:none'
-            losePage.style = 'display:flex'
+            console.log("dead")
+            // gamePage.style = 'display:none'
+            // losePage.style = 'display:flex'
             }
         
         this.bullets.forEach((bullet) => {
