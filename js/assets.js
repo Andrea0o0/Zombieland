@@ -31,5 +31,3 @@ let worldImg = new Image()
 // console.log(backgroundsize.naturalWidth)
 
 //ZOMBIES
-
-const name 

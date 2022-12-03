@@ -1,16 +1,31 @@
-
 class Game {
     constructor(ctx,avatar,world,zombie) {
         this.ctx = ctx
         this.avatar = new Player(avatar.name,avatar.x,avatar.y,avatar.width,avatar.height)
         this.world = new World(0,0,world.width)
+        this.zombies = []
+        this.howmany_zombies = 0
+    
+        // Generate new zombies 
+        this.totalZombies = []
+        for(let i=0;i<n_zombies.value;i++){
+            this.totalZombies.push(Math.ceil(Math.random()*(zombie.length))-1)
+            }
     }
 
-    _generateZombies(){
-        // Generate new zombies 
-        this.zombie = new Zombie();
-        zombieImg.src = zombie.img
-            //Apply efects
+    _createZombies(){
+        //Create Zombies
+        // console.log(this.totalZombies.length)
+        // console.log(iZombies)
+        if(iZombies<this.totalZombies.length){
+            const newZombie = new Zombie(this.totalZombies)
+            this.zombies.push(newZombie)
+            console.log(this.zombies)
+        }
+    }
+
+    _drawZombies(){
+        this.ctx.drawImage(this.zombies[0].image,this.zombies[0].x,this.zombies[0].y,this.zombies[0].width,this.zombies[0].height)
     }
     
     _assignControls(){
@@ -49,6 +64,8 @@ class Game {
         }
         
         this._clean()
+        this._createZombies()
+        this._drawZombies()
         this._drawAvatar()
         // window.requestAnimationFrame(this._update.bind(this))
         window.requestAnimationFrame(() => this._update())
