@@ -38,13 +38,15 @@ class Player {
             index = 0
         }
         else if(movement.includes('U') && movement.includes('R')){
-            this.x += 5
+            this.x += 15
         }
         else if(movement.includes('U') && movement.includes('L')){
-            this.x -= 5
+            this.x -= 15
         }
             this.y += yGravity[index]
             index++
         }
+
+
         
     }

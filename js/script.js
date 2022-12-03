@@ -100,7 +100,15 @@ background6.onclick = function(){
     world.width = background6_Image.naturalWidth
 }
 
+    //GAME PAGE
+    const gamePage = document.getElementById('game-page')
 
+    //LOSE PAGE
+    const losePage = document.getElementById('lose-page')
+
+    //WIN PAGE
+    const winPage = document.getElementById('win-page')
+    
 window.onload = function(){
     
     // const ctxAvatar = canvasAvatar.getContext('2d')
@@ -114,8 +122,7 @@ window.onload = function(){
     const avatarPage = document.getElementById('avatar-page')
     const startGame = document.getElementById('start-game')
 
-    //GAME PAGE
-    const gamePage = document.getElementById('game-page')
+
 
     startAvatar.onclick = function(){
         startPage.style = 'display:none'

@@ -1,7 +1,8 @@
 const zombieImg = new Image()
+zombieImg.src = "/images/ZOMBIES/craig-mullins-zombie-dog-idle NO BACKGROUND.gif"
 let iZombies = 0
 
-class Zombie {
+/*class Zombie {
     constructor(totalZombies) {
     
         zombieImg.src = zombie[totalZombies[iZombies]].img
@@ -27,60 +28,21 @@ class Zombie {
 
     
 
+}*/
+class Zombie {
+constructor(x, y, w, h){
+    this.image = zombieImg
+    this.x = x
+    this.y = y
+    this.width = w
+    this.height = h
+}
+moveLeft(){
+    setInterval(()=> this.x -= 3, 150)
+    console.log("itworks")
+}
 }
 
-const zombie = [
-    {
-        name:"BigZombie",
-        x:50,
-        y:50,
-        width:300,
-        height:200,
-        img:"/images/ZOMBIES/craig-mullins-boss-02-death.gif",
-        power2kill:5,
-        lives:5
-    },
-    {
-        name:"WalkingDead1",
-        x:50,
-        y:50,
-        width:300,
-        height:200,
-        img:"/images/ZOMBIES/craig-mullins-z-helmet-blue-squash-wip-03.gif",
-        power2kill:1,
-        lives:1
-    },
-    {
-        name:"WalkingDead2",
-        x:50,
-        y:50,
-        width:300,
-        height:200,
-        img:"/images/ZOMBIES/craig-mullins-z-spikey-walk-v1.gif",
-        power2kill:1,
-        lives:1
-    },
-    {
-        name:"Butcher",
-        x:50,
-        y:50,
-        width:300,
-        height:200,
-        img:"/images/ZOMBIES/craig-mullins-zombie-boss-03-idle.gif",
-        power2kill:2,
-        lives:2
-    },
-    {
-        name:"DogZombie",
-        x:50,
-        y:50,
-        width:300,
-        height:200,
-        img:"/images/ZOMBIES/craig-mullins-zombie-dog-idle NO BACKGROUND.gif",
-        power2kill:1,
-        lives:1
-    }
-]
 
 const n_zombies = document.getElementById('zombies_number')
 

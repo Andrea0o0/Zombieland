@@ -11,7 +11,9 @@
 #start-page,
 #lose-page,
 #avatar-page,
-#game-page {
+#game-page,
+#lose-page,
+#win-page {
   height: 600px;
   width: 800px;
   display: flex;
@@ -26,7 +28,8 @@
 
 #lose-page,
 #avatar-page,
-#game-page {
+#game-page,
+#win-page {
   display: none;
 }
 
