@@ -56,7 +56,7 @@ class Game {
                 break
             case 'Space':
                 this.avatar.moveUp()
-                movement += 'U'
+                movement =  'U'
                 avatar_type += 'S'
                 break
             case 'Enter':
