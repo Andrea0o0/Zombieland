@@ -48,11 +48,13 @@ class Game {
                 this.avatar.moveRight()
                 movement += 'R'
                 avatar_type += 'R'
+                position += movement
                 break
             case 'ArrowLeft':
                 this.avatar.moveLeft()
                 movement += 'L'
                 avatar_type += 'R'
+                position += movement
                 break
             case 'Space':
                 this.avatar.moveUp()
@@ -75,8 +77,14 @@ class Game {
 
     _checkCollisions(){
 
-        if((this.zombie.x<this.avatar.x + this.avatar.width&&this.avatar.x<this.zombie.x + this.zombie.width)&&(this.zombie.y<this.avatar.y + this.avatar.height&&this.avatar.y<this.zombie.y + this.zombie.height)){
-            console.log("dead")
+        if((this.zombie.x<this.avatar.x + this.avatar.width-10&&this.avatar.x<this.zombie.x + this.zombie.width-10)&&(this.zombie.y<this.avatar.y + this.avatar.height-10&&this.avatar.y<this.zombie.y + this.zombie.height-10)){
+            if(this.avatar.lives > 0){
+                this.avatar.lives --
+            }
+            else{
+                console.log('dead')
+            }
+
             // gamePage.style = 'display:none'
             // losePage.style = 'display:flex'
             }
@@ -99,21 +107,14 @@ class Game {
 
     _drawAvatar() {
         this.ctx.drawImage(this.world.image,0,0,canvasGame.width,canvasGame.height,0,0,((canvasGame.width/this.world.width)*this.world.width),650)
-        if(avatar_type.includes('S')&&avatar_type.includes('L')&&i<avatar.static_Left.length){
-            avatarImg.src = avatar.static_Left[i]
-            i++
-        }
-        if(avatar_type.includes('S')&&avatar_type.includes('R')&&i<avatar.static_Right.length){
-            avatarImg.src = avatar.static_Right[i]
-            i++
-        }
-        if(i>=avatar.run_Right.length){
+  
+        // console.log(this.avatar.image,i)
+
+            this.ctx.drawImage(this.avatar.image,this.avatar.x,this.avatar.y,this.avatar.width,this.avatar.height)
+
+        if(i>=avatar.run_Right.length-1){
             i=0
         }
-        if(avatar_type.includes('R')){
-            avatar_type=""
-        }
-        this.ctx.drawImage(this.avatar.image,this.avatar.x,this.avatar.y,this.avatar.width,this.avatar.height)
     }
 
     _clean() {

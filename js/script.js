@@ -1,3 +1,4 @@
+let position = ''
 const canvasGame = document.getElementById('canvas-Game')
 let index = 0
 let movement = ''
@@ -150,6 +151,7 @@ window.onload = function(){
     }
 
 const totalZombies = []
+
 
     startGame.onclick = function(){
         avatarPage.style = 'display:none'

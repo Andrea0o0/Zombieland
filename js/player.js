@@ -6,6 +6,7 @@ class Player {
         this.y = y
         this.width = width
         this.height = height
+        this.lives = 100
     }
 
 
@@ -48,15 +49,16 @@ class Player {
         }
         else if(movement.includes('U') && movement.includes('R')){
             this.x += 10
-            avatarImg.src = avatar.static_Right[i]
+            avatarImg.src = avatar.static_Right[0]
         }
         else if(movement.includes('U') && movement.includes('L')){
             this.x -= 10
-            avatarImg.src = avatar.static_Left[i]
+            avatarImg.src = avatar.static_Left[0]
         }
             this.y += yGravity[index]
             index++
-            i++
+            i
+            avatar_type = ''
         }
 
 

@@ -1,3 +1,4 @@
+
 class Bullet {
     constructor() {
         this.image = bulletImg
@@ -9,30 +10,29 @@ class Bullet {
     }
 
     _direction(){
-        console.log(movement)
-        if(movement[movement.length-2]==('R')){
-            this.direction = 'R'
+        if(position[position.length-1]==('L')){
+            this.direction = 'L'
             }
             else{
-                this.direction = 'L'
+                this.direction = 'R'
             }
+        if(position.length>50){
+        position.slice(position.length-50,position.length)
+        }
     }
 
     _position(avatar){
-        this.x = avatar.x + avatar.width
+        if(this.direction==('R')){
+            this.x = avatar.x + avatar.width}
+        else{
+            this.x = avatar.x
+        }
         this.y = avatar.y+130
-          // _bullet_PositionX(){
-    //     if(movement.includes('R')){
-    //         return this.avatar.x + this.avatar.width
-    //     }
-    //     else{
-    //         return this.avatar.x
-    //     }
-    // }
+    
     }
 
-    _shoot(){
-        console.log(this.direction)
+    _shoot(){ 
+        // console.log(this.direction)
         if(this.direction==('R')){
             this.x += 15
         }
