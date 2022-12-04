@@ -8,6 +8,7 @@ class Player {
         this.height = height
     }
 
+
     moveRight(){
         if(movement.includes('R') && movement.includes('U')==false){
             this.x = this.x + 10
@@ -15,7 +16,9 @@ class Player {
         if(this.x > canvasGame.width){
             this.x = 0 - this.width
         }
-    
+
+        avatarImg.src = avatar.run_Right[i]
+        i++
     }
 
     moveLeft(){
@@ -25,12 +28,18 @@ class Player {
         if(this.x + this.width+10 < 0){
             this.x = canvasGame.width
         }
+        avatarImg.src = avatar.run_Left[i]
+        i++
     } 
 
     moveUp(){
         let vY = ((this.y/1.8)/(4*8))
-        let yGravity = [(0),(-vY*11),(0),(-vY*10),(0),(-vY*8),(0),(-vY*5),(0),(-vY*4),(0),(-vY*3),(0),(-vY*2),(0),(-vY),(0),(0),(0),(0),(0),(vY*2),(0),(0),(vY*3),(0),(vY*4),(0),(vY*5),(0),(vY*6),(0),(vY*7),(0),(vY*8),(0),(vY),(0)]
+        let yGravity = [(0),(-vY*8),(0),(-vY*10),(0),(-vY*8),(0),(-vY*5),(0),(-vY*4),(0),(-vY*3),(0),(-vY*2),(0),(-vY),(0),(0),(0),(0),(0),(vY*2),(0),(0),(vY*3),(0),(vY*4),(0),(vY*5),(0),(vY*6),(0),(vY*7),(0),(vY*8),(0),(vY),(0)]
 
+        if(avatar_type.includes('S')){
+            movement.replaceAll('L','')
+            movement.replaceAll('R','')
+        }
 
         if(index >= yGravity.length){
             this.y = canvasGame.height-this.height
@@ -38,13 +47,16 @@ class Player {
             index = 0
         }
         else if(movement.includes('U') && movement.includes('R')){
-            this.x += 15
+            this.x += 10
+            avatarImg.src = avatar.static_Right[i]
         }
         else if(movement.includes('U') && movement.includes('L')){
-            this.x -= 15
+            this.x -= 10
+            avatarImg.src = avatar.static_Left[i]
         }
             this.y += yGravity[index]
             index++
+            i++
         }
 
 

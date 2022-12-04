@@ -1,6 +1,10 @@
 //KILLERS - AVATARS
 let avatar
 let avatarImg = new Image()
+let avatar_type = 'S'
+
+let bulletImg = new Image()
+bulletImg.src = '/images/BULLET/Bullet.png'
 
 const killerAndrea = {
     name:'Andrea',
@@ -8,16 +12,96 @@ const killerAndrea = {
     y:650-220,
     width:150,
     height:200,
-    img:'/images/KILLERS AVATAR/craig-mullins-maggie-idle-02 NO BACKGROUND cut.gif'
+    img:'/images/KILLERS AVATAR/craig-mullins-maggie-idle-02 NO BACKGROUND cut.gif',
+    static_Right:[
+        '/images/KILLERS AVATAR/ANDREA/STATIC/RIGHT/1.png',
+        '/images/KILLERS AVATAR/ANDREA/STATIC/RIGHT/2.png',
+        '/images/KILLERS AVATAR/ANDREA/STATIC/RIGHT/3.png',
+        '/images/KILLERS AVATAR/ANDREA/STATIC/RIGHT/4.png',
+        '/images/KILLERS AVATAR/ANDREA/STATIC/RIGHT/5.png',
+        '/images/KILLERS AVATAR/ANDREA/STATIC/RIGHT/6.png',
+        '/images/KILLERS AVATAR/ANDREA/STATIC/RIGHT/7.png',
+        '/images/KILLERS AVATAR/ANDREA/STATIC/RIGHT/8.png'
+    ],
+    static_Left:[
+        '/images/KILLERS AVATAR/ANDREA/STATIC/LEFT/1.png',
+        '/images/KILLERS AVATAR/ANDREA/STATIC/LEFT/2.png',
+        '/images/KILLERS AVATAR/ANDREA/STATIC/LEFT/3.png',
+        '/images/KILLERS AVATAR/ANDREA/STATIC/LEFT/4.png',
+        '/images/KILLERS AVATAR/ANDREA/STATIC/LEFT/5.png',
+        '/images/KILLERS AVATAR/ANDREA/STATIC/LEFT/6.png',
+        '/images/KILLERS AVATAR/ANDREA/STATIC/LEFT/7.png',
+        '/images/KILLERS AVATAR/ANDREA/STATIC/LEFT/8.png',
+    ],
+    run_Right:[
+        '/images/KILLERS AVATAR/ANDREA/RUN/RIGHT/1.png',
+        '/images/KILLERS AVATAR/ANDREA/RUN/RIGHT/2.png',
+        '/images/KILLERS AVATAR/ANDREA/RUN/RIGHT/3.png',
+        '/images/KILLERS AVATAR/ANDREA/RUN/RIGHT/4.png',
+        '/images/KILLERS AVATAR/ANDREA/RUN/RIGHT/5.png',
+        '/images/KILLERS AVATAR/ANDREA/RUN/RIGHT/6.png',
+        '/images/KILLERS AVATAR/ANDREA/RUN/RIGHT/7.png',
+        '/images/KILLERS AVATAR/ANDREA/RUN/RIGHT/8.png',
+    ],
+    run_Left:[
+        '/images/KILLERS AVATAR/ANDREA/RUN/LEFT/1.png',
+        '/images/KILLERS AVATAR/ANDREA/RUN/LEFT/2.png',
+        '/images/KILLERS AVATAR/ANDREA/RUN/LEFT/3.png',
+        '/images/KILLERS AVATAR/ANDREA/RUN/LEFT/4.png',
+        '/images/KILLERS AVATAR/ANDREA/RUN/LEFT/5.png',
+        '/images/KILLERS AVATAR/ANDREA/RUN/LEFT/6.png',
+        '/images/KILLERS AVATAR/ANDREA/RUN/LEFT/7.png',
+        '/images/KILLERS AVATAR/ANDREA/RUN/LEFT/8.png',
+    ]
 }
 
 const killerSally = {
     name:'Sally',
     x:50,
     y:650-220,
-    width:150,
+    width:180,
     height:200,
-    img:'/images/KILLERS AVATAR/craig-mullins-michone-idle NO BACKGROUND cut.gif'
+    img:'/images/KILLERS AVATAR/craig-mullins-michone-idle NO BACKGROUND cut.gif',
+    static_Right:[
+        '/images/KILLERS AVATAR/SALLY/STATIC/RIGHT/1.png',
+        '/images/KILLERS AVATAR/SALLY/STATIC/RIGHT/2.png',
+        '/images/KILLERS AVATAR/SALLY/STATIC/RIGHT/3.png',
+        '/images/KILLERS AVATAR/SALLY/STATIC/RIGHT/4.png',
+        '/images/KILLERS AVATAR/SALLY/STATIC/RIGHT/5.png',
+        '/images/KILLERS AVATAR/SALLY/STATIC/RIGHT/6.png',
+        '/images/KILLERS AVATAR/SALLY/STATIC/RIGHT/7.png',
+        '/images/KILLERS AVATAR/SALLY/STATIC/RIGHT/8.png'
+    ],
+    static_Left:[
+        '/images/KILLERS AVATAR/SALLY/STATIC/LEFT/1.png',
+        '/images/KILLERS AVATAR/SALLY/STATIC/LEFT/2.png',
+        '/images/KILLERS AVATAR/SALLY/STATIC/LEFT/3.png',
+        '/images/KILLERS AVATAR/SALLY/STATIC/LEFT/4.png',
+        '/images/KILLERS AVATAR/SALLY/STATIC/LEFT/5.png',
+        '/images/KILLERS AVATAR/SALLY/STATIC/LEFT/6.png',
+        '/images/KILLERS AVATAR/SALLY/STATIC/LEFT/7.png',
+        '/images/KILLERS AVATAR/SALLY/STATIC/LEFT/8.png',
+    ],
+    run_Right:[
+        '/images/KILLERS AVATAR/SALLY/RUN/RIGHT/1.png',
+        '/images/KILLERS AVATAR/SALLY/RUN/RIGHT/2.png',
+        '/images/KILLERS AVATAR/SALLY/RUN/RIGHT/3.png',
+        '/images/KILLERS AVATAR/SALLY/RUN/RIGHT/4.png',
+        '/images/KILLERS AVATAR/SALLY/RUN/RIGHT/5.png',
+        '/images/KILLERS AVATAR/SALLY/RUN/RIGHT/6.png',
+        '/images/KILLERS AVATAR/SALLY/RUN/RIGHT/7.png',
+        '/images/KILLERS AVATAR/SALLY/RUN/RIGHT/8.png'
+    ],
+    run_Left:[
+        '/images/KILLERS AVATAR/SALLY/RUN/LEFT/1.png',
+        '/images/KILLERS AVATAR/SALLY/RUN/LEFT/2.png',
+        '/images/KILLERS AVATAR/SALLY/RUN/LEFT/3.png',
+        '/images/KILLERS AVATAR/SALLY/RUN/LEFT/4.png',
+        '/images/KILLERS AVATAR/SALLY/RUN/LEFT/5.png',
+        '/images/KILLERS AVATAR/SALLY/RUN/LEFT/6.png',
+        '/images/KILLERS AVATAR/SALLY/RUN/LEFT/7.png',
+        '/images/KILLERS AVATAR/SALLY/RUN/LEFT/8.png',
+    ]
 }
 
 avatar = killerAndrea

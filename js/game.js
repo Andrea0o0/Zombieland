@@ -1,5 +1,6 @@
+let i = 0
 class Game {
-    constructor(ctx,avatar,world,zombie) {
+    constructor(ctx,avatar,world,zombie,) {
         this.ctx = ctx
         this.avatar = new Player(avatar.name,avatar.x,avatar.y,avatar.width,avatar.height)
         this.world = new World(0,0,world.width)
@@ -22,6 +23,14 @@ class Game {
         }
     }
 
+    // _bullet_PositionX(){
+    //     if(movement.includes('R')){
+    //         return this.avatar.x + this.avatar.width
+    //     }
+    //     else{
+    //         return this.avatar.x
+    //     }
+    // }
 
     _drawZombies(){
         // this.zombies.forEach((elem,i) => {
@@ -29,6 +38,8 @@ class Game {
         // })
         this.ctx.drawImage(this.zombie.image,this.zombie.x,this.zombie.y,this.zombie.width,this.zombie.height)
     }
+
+
     
     _assignControls(){
     document.addEventListener('keydown',(event) => {
@@ -36,20 +47,27 @@ class Game {
             case 'ArrowRight':
                 this.avatar.moveRight()
                 movement += 'R'
+                avatar_type += 'R'
                 break
             case 'ArrowLeft':
                 this.avatar.moveLeft()
                 movement += 'L'
+                avatar_type += 'R'
                 break
             case 'Space':
                 this.avatar.moveUp()
                 movement += 'U'
+                avatar_type += 'S'
                 break
             case 'Enter':
-                const newbullet = new Bullet((this.avatar.x+this.avatar.width),this.avatar.y+130)
+                const newbullet = new Bullet()
+                newbullet._direction()
+                newbullet._position(this.avatar)
                 this.bullets.push(newbullet)
+                avatar_type += 'S'
                 break
             default:
+                avatar_type += 'S'
                 break
             }
         })
@@ -73,16 +91,28 @@ class Game {
         }
 
     _drawBullets(){
-        console.log(this.bullets)
         this.bullets.forEach((bullet) => {
             bullet._shoot()
-            this.ctx.fillStyle = 'black';
-            this.ctx.fillRect(bullet.x,bullet.y,bullet.width,bullet.height) 
+            this.ctx.drawImage(bullet.image,bullet.x,bullet.y,bullet.width,bullet.height) 
         })
     }
 
     _drawAvatar() {
         this.ctx.drawImage(this.world.image,0,0,canvasGame.width,canvasGame.height,0,0,((canvasGame.width/this.world.width)*this.world.width),650)
+        if(avatar_type.includes('S')&&avatar_type.includes('L')&&i<avatar.static_Left.length){
+            avatarImg.src = avatar.static_Left[i]
+            i++
+        }
+        if(avatar_type.includes('S')&&avatar_type.includes('R')&&i<avatar.static_Right.length){
+            avatarImg.src = avatar.static_Right[i]
+            i++
+        }
+        if(i>=avatar.run_Right.length){
+            i=0
+        }
+        if(avatar_type.includes('R')){
+            avatar_type=""
+        }
         this.ctx.drawImage(this.avatar.image,this.avatar.x,this.avatar.y,this.avatar.width,this.avatar.height)
     }
 
