@@ -6,7 +6,7 @@ class Game {
         this.world = new World(0,0,world.width)
         this.zombies = []
         this.howmany_zombies = 0
-        this.zombie = new Zombie(zombie.x,zombie.y,zombie.width,zombie.height)
+        // this.zombie = new Zombie(zombie.x,zombie.y,zombie.width,zombie.height)
         this.bullets = []
         this.bulletsline = bullets
         this.hearts = hearts
@@ -20,26 +20,61 @@ class Game {
 
     _createZombies(){
         //Create Zombies
-        if(iZombies<this.totalZombies.length){
-            const newZombie = new Zombie(this.totalZombies)
-            this.zombies.push(newZombie)
-        }
+        // (Math.ceil(Math.random()*(zombie.length))-1)
+        let zombie_i_Random
+
+        zombie_i_Random = Math.ceil(Math.random()*(zombie.length))-1
+
+        if(zombie_i_Random >= zombie.length){
+        zombie_i_Random=0
     }
 
-    // _bullet_PositionX(){
-    //     if(movement.includes('R')){
-    //         return this.avatar.x + this.avatar.width
-    //     }
-    //     else{
-    //         return this.avatar.x
-    //     }
-    // }
+        const newZombie = new Zombie(
+            zombie[zombie_i_Random].x,
+            zombie[zombie_i_Random].y,
+            zombie[zombie_i_Random].width,
+            zombie[zombie_i_Random].height)
+
+        newZombie._moveLeft()
+        newZombie._select_Random_Index(zombie_i_Random)
+        this.zombies.push(newZombie)
+        zombie_i_Random++
+        
+        this.generateInterval = setInterval(() => {
+    
+        zombie_i_Random = Math.ceil(Math.random()*(zombie.length))-1
+
+            if(zombie_i_Random >= zombie.length){
+            zombie_i_Random=0
+        }
+
+            const newZombie = new Zombie(
+                zombie[zombie_i_Random].x,
+                zombie[zombie_i_Random].y,
+                zombie[zombie_i_Random].width,
+                zombie[zombie_i_Random].height)
+
+            newZombie._moveLeft()
+            newZombie._select_Random_Index(zombie_i_Random)
+            this.zombies.push(newZombie)
+            zombie_i_Random++
+        },7000)
+        
+    }
+
 
     _drawZombies(){
-        // this.zombies.forEach((elem,i) => {
-        //     this.ctx.drawImage(this.zombies[i].image,elem.x,elem.y,elem.width,elem.height)
-        // })
-        this.ctx.drawImage(this.zombie.image,this.zombie.x,this.zombie.y,this.zombie.width,this.zombie.height)
+        this.zombies.forEach((elem,i) => {
+            if(iZombies<=zombie[elem.random_index].img.length-1){
+                zombieImg.src = zombie[elem.random_index].img[Math.round(iZombies)]
+                iZombies += 0.1
+            }
+            else{
+                iZombies = 0
+            }
+            console.log(Math.round(iZombies))
+            this.ctx.drawImage(zombieImg,elem.x,elem.y,elem.width,elem.height)
+        })
     }
 
 
@@ -82,8 +117,9 @@ class Game {
     }
 
     _checkCollisions(){
-
-        if((this.zombie.x<this.avatar.x + this.avatar.width-10&&this.avatar.x<this.zombie.x + this.zombie.width-10)&&(this.zombie.y<this.avatar.y + this.avatar.height-10&&this.avatar.y<this.zombie.y + this.zombie.height-10)){
+        this.zombies.forEach((zombiee) => {
+        if((zombiee.x<this.avatar.x + this.avatar.width-10&&this.avatar.x<zombiee.x + zombiee.width-10)&&(zombiee.y<this.avatar.y + this.avatar.height-10&&this.avatar.y<zombiee.y + zombiee.height-10))
+        {
             if(this.avatar.lives > 0){
                 this.avatar.lives --
             }
@@ -91,16 +127,16 @@ class Game {
                 console.log('dead')
 
             }
-
+        }
             // gamePage.style = 'display:none'
             // losePage.style = 'display:flex'
-            }
         
         this.bullets.forEach((bullet) => {
-        if((this.zombie.x<bullet.x + bullet.width&&bullet.x<this.zombie.x + this.zombie.width)&&(this.zombie.y<bullet.y + bullet.height&&bullet.y<this.zombie.y + this.zombie.height)){
-            gamePage.style = 'display:none'
-            winPage.style = 'display:flex'
+        if((zombiee.x<bullet.x + bullet.width&&bullet.x<zombiee.x + zombiee.width)&&(zombiee.y<bullet.y + bullet.height&&bullet.y<zombiee.y + zombiee.height)){
+            zombiee.y -= canvasGame.height
+            bullet.y -= canvasGame.height
         }})
+    })
             
 
         }
@@ -183,7 +219,7 @@ class Game {
     start() {
     this._assignControls()
     this._update()
-    this.zombie.moveLeft()
+    this._createZombies()
     
     }
 }

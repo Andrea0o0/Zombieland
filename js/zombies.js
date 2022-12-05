@@ -1,5 +1,4 @@
 const zombieImg = new Image()
-zombieImg.src = "/images/ZOMBIES/craig-mullins-zombie-dog-idle NO BACKGROUND.gif"
 let iZombies = 0
 
 /*class Zombie {
@@ -36,9 +35,14 @@ constructor(x, y, w, h){
     this.y = y
     this.width = w
     this.height = h
+    this.random_index = undefined
 }
-moveLeft(){
+_moveLeft(){
     setInterval(()=> this.x -= 18, 100)
+}
+
+_select_Random_Index(randomIndex){
+    this.random_index = randomIndex
 }
 }
 

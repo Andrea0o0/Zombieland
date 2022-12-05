@@ -249,17 +249,48 @@ let timer = {
 }
 
 //ZOMBIES
-const zombie = 
+const zombie = [
     {
-        name:"BigZombie",
+        name:"DogZombie",
         x:1450,
         y:650-180,
-        width:200,
+        width:300,
         height:180,
-        img:"/images/ZOMBIES/craig-mullins-zombie-dog-idle NO BACKGROUND.gif",
+        img:[
+            '/images/ZOMBIES/DOG/LEFT/1.png',
+            '/images/ZOMBIES/DOG/LEFT/2.png',
+            '/images/ZOMBIES/DOG/LEFT/3.png',
+            '/images/ZOMBIES/DOG/LEFT/4.png',
+            '/images/ZOMBIES/DOG/LEFT/5.png',
+            '/images/ZOMBIES/DOG/LEFT/6.png',
+            '/images/ZOMBIES/DOG/LEFT/7.png',
+            '/images/ZOMBIES/DOG/LEFT/8.png',
+            '/images/ZOMBIES/DOG/LEFT/9.png'
+        ],
+        power2kill:5,
+        lives:5
+    },
+    {
+        name:"WalkingZombie",
+        x:1450,
+        y:650-180,
+        width:150,
+        height:180,
+        img:[
+            '/images/ZOMBIES/WALKING DEAD/RUN 1/LEFT/1.png',
+            '/images/ZOMBIES/WALKING DEAD/RUN 1/LEFT/2.png',
+            '/images/ZOMBIES/WALKING DEAD/RUN 1/LEFT/3.png',
+            '/images/ZOMBIES/WALKING DEAD/RUN 1/LEFT/4.png',
+            '/images/ZOMBIES/WALKING DEAD/RUN 1/LEFT/5.png',
+            '/images/ZOMBIES/WALKING DEAD/RUN 1/LEFT/6.png',
+            '/images/ZOMBIES/WALKING DEAD/RUN 1/LEFT/7.png',
+            '/images/ZOMBIES/WALKING DEAD/RUN 1/LEFT/8.png'
+        ],
         power2kill:5,
         lives:5
     }
+]
+    
 
 //     {
 //         name:"WalkingDead1",
