@@ -54,6 +54,46 @@ const killerAndrea = {
         '/images/KILLERS AVATAR/ANDREA/RUN/LEFT/8.png',
     ]
 }
+let heartsImg = new Image()
+const hearts = {
+    x:500,
+    y:20,
+    width:400,
+    height:70,
+    img:[
+        '/images/TOOLS/HEARTS/1 HEART.png',
+        '/images/TOOLS/HEARTS/2 HEARTS.png',
+        '/images/TOOLS/HEARTS/3 HEARTS.png',
+        '/images/TOOLS/HEARTS/4 HEARTS.png',
+        '/images/TOOLS/HEARTS/5 HEARTS.png',
+        '/images/TOOLS/HEARTS/6 HEARTS.png',
+        '/images/TOOLS/HEARTS/7 HEARTS.png',
+        '/images/TOOLS/HEARTS/8 HEARTS.png',
+        '/images/TOOLS/HEARTS/9 HEARTS.png',
+        '/images/TOOLS/HEARTS/10 HEARTS.png'
+    ]
+
+}
+let bulletslineImg = new Image()
+const bulletsline = {
+    x:950,
+    y:20,
+    width:400,
+    height:70,
+    img:[
+        '/images/TOOLS/BULLETS/1 BULLET.png',
+        '/images/TOOLS/BULLETS/2 BULLETS.png',
+        '/images/TOOLS/BULLETS/3 BULLETS.png',
+        '/images/TOOLS/BULLETS/4 BULLETS.png',
+        '/images/TOOLS/BULLETS/5 BULLETS.png',
+        '/images/TOOLS/BULLETS/6 BULLETS.png',
+        '/images/TOOLS/BULLETS/7 BULLETS.png',
+        '/images/TOOLS/BULLETS/8 BULLETS.png',
+        '/images/TOOLS/BULLETS/9 BULLETS.png',
+        '/images/TOOLS/BULLETS/10 BULLETS.png'
+    ]
+
+}
 
 const killerSally = {
     name:'Sally',

@@ -39,7 +39,6 @@ constructor(x, y, w, h){
 }
 moveLeft(){
     setInterval(()=> this.x -= 8, 100)
-    console.log("itworks")
 }
 }
 

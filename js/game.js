@@ -1,6 +1,6 @@
 let i = 0
 class Game {
-    constructor(ctx,avatar,world,zombie,) {
+    constructor(ctx,avatar,world,zombie,bullets,hearts) {
         this.ctx = ctx
         this.avatar = new Player(avatar.name,avatar.x,avatar.y,avatar.width,avatar.height)
         this.world = new World(0,0,world.width)
@@ -8,6 +8,8 @@ class Game {
         this.howmany_zombies = 0
         this.zombie = new Zombie(zombie.x,zombie.y,zombie.width,zombie.height)
         this.bullets = []
+        this.bulletsline = bullets
+        this.hearts = hearts
         // Generate new zombies 
         // this.totalZombies = []
         // for(let i=0;i<n_zombies.value;i++){
@@ -62,11 +64,15 @@ class Game {
                 avatar_type += 'S'
                 break
             case 'Enter':
+                if(this.avatar.bullets_shoots>0){
+                console.log(this.avatar.bullets_shoots)
                 const newbullet = new Bullet()
                 newbullet._direction()
                 newbullet._position(this.avatar)
                 this.bullets.push(newbullet)
+                this.avatar.bullets_shoots--
                 avatar_type += 'S'
+                }
                 break
             default:
                 avatar_type += 'S'
@@ -83,6 +89,7 @@ class Game {
             }
             else{
                 console.log('dead')
+
             }
 
             // gamePage.style = 'display:none'
@@ -105,8 +112,30 @@ class Game {
         })
     }
 
+    _drawTools(){
+        if(this.avatar.lives>4){
+            heartsImg.src = this.hearts.img[Math.round(this.avatar.lives*0.1)-1]
+        }
+        else{
+            heartsImg.src = '/images/TOOLS/EMPTY.png'
+        }
+       console.log(this.avatar.lives)
+        //DRAW LIVES LINE
+        this.ctx.drawImage(heartsImg,this.hearts.x,this.hearts.y,this.hearts.width,this.hearts.height)
+
+        //DRAW BULLETS LINE
+        if(this.avatar.bullets_shoots>0){
+            bulletslineImg.src = this.bulletsline.img[this.avatar.bullets_shoots-1]
+        }
+        else{
+            bulletslineImg.src = '/images/TOOLS/EMPTY.png'
+        }
+        this.ctx.drawImage(bulletslineImg,this.bulletsline.x,this.bulletsline.y,this.bulletsline.width,this.bulletsline.height)
+    }
+
+
     _drawAvatar() {
-        this.ctx.drawImage(this.world.image,0,0,canvasGame.width,canvasGame.height,0,0,((canvasGame.width/this.world.width)*this.world.width),650)
+        this.ctx.drawImage(this.world.image,0,0,canvasGame.width,canvasGame.height)
   
         // console.log(this.avatar.image,i)
 
@@ -122,23 +151,30 @@ class Game {
       }
 
     _update() {
+        if(this.avatar.lives>3){
         if(movement.includes('U')){
             setInterval(this.avatar.moveUp(),100)
         }
-        
         this._clean()
         // this._createZombies()
         this._drawAvatar()
         this._drawZombies()
         this._checkCollisions()
+        this._drawTools()
         this._drawBullets()
         if(this.avatar.x+this.avatar.width>=canvasGame.width){
             gamePage.style = 'display:none'
             winPage.style = 'display:flex'
         }
         // window.requestAnimationFrame(this._update.bind(this))
-        window.requestAnimationFrame(() => this._update())
-
+        
+    }
+    else{
+        let game_Over = new Image()
+        game_Over.src = '/images/TOOLS/GAME_OVER.png'
+        this.ctx.drawImage(game_Over,500,0,900,600)
+    }
+    window.requestAnimationFrame(() => this._update())
     }
     
     start() {
@@ -146,7 +182,6 @@ class Game {
     this._update()
     this.zombie.moveLeft()
     }
-
 }
 
 

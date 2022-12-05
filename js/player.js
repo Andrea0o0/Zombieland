@@ -7,6 +7,7 @@ class Player {
         this.width = width
         this.height = height
         this.lives = 100
+        this.bullets_shoots = 10
     }
 
 
