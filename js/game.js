@@ -1,6 +1,6 @@
 let i = 0
 class Game {
-    constructor(ctx,avatar,world,zombie,bullets,hearts) {
+    constructor(ctx,avatar,world,zombie,bullets,hearts,timer) {
         this.ctx = ctx
         this.avatar = new Player(avatar.name,avatar.x,avatar.y,avatar.width,avatar.height)
         this.world = new World(0,0,world.width)
@@ -10,6 +10,7 @@ class Game {
         this.bullets = []
         this.bulletsline = bullets
         this.hearts = hearts
+        this.timer = timer
         // Generate new zombies 
         // this.totalZombies = []
         // for(let i=0;i<n_zombies.value;i++){
@@ -65,7 +66,6 @@ class Game {
                 break
             case 'Enter':
                 if(this.avatar.bullets_shoots>0){
-                console.log(this.avatar.bullets_shoots)
                 const newbullet = new Bullet()
                 newbullet._direction()
                 newbullet._position(this.avatar)
@@ -119,7 +119,6 @@ class Game {
         else{
             heartsImg.src = '/images/TOOLS/EMPTY.png'
         }
-       console.log(this.avatar.lives)
         //DRAW LIVES LINE
         this.ctx.drawImage(heartsImg,this.hearts.x,this.hearts.y,this.hearts.width,this.hearts.height)
 
@@ -133,6 +132,9 @@ class Game {
         this.ctx.drawImage(bulletslineImg,this.bulletsline.x,this.bulletsline.y,this.bulletsline.width,this.bulletsline.height)
     }
 
+    _drawTimer(){
+        this.ctx.drawImage(timerImg,this.timer.x,this.timer.y,this.timer.width,this.timer.height)
+    }
 
     _drawAvatar() {
         this.ctx.drawImage(this.world.image,0,0,canvasGame.width,canvasGame.height)
@@ -161,6 +163,7 @@ class Game {
         this._drawZombies()
         this._checkCollisions()
         this._drawTools()
+        this._drawTimer()
         this._drawBullets()
         if(this.avatar.x+this.avatar.width>=canvasGame.width){
             gamePage.style = 'display:none'
@@ -181,11 +184,26 @@ class Game {
     this._assignControls()
     this._update()
     this.zombie.moveLeft()
+    
     }
 }
 
 
-        
+        const timerInterval = setInterval(function() {
+             if(itimer>timer.img.length){
+            clearInterval(timerInterval)
+            gamePage.style = 'display:none'
+            winPage.style = 'display:flex'
+             }
+            else{
+            timerImg.src = timer.img[itimer].src
+            itimer++
+             }
+            },
+            ((timer.img[itimer].seconds)*1000+waiter)/3)
+
+       
+          
  
 
   

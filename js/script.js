@@ -157,8 +157,9 @@ const totalZombies = []
         avatarPage.style = 'display:none'
         gamePage.style = 'display:flex'
         canvasGame.classList.remove('hidden')
-        const game = new Game (ctx,avatar,world,zombie,bulletsline,hearts)
+        const game = new Game (ctx,avatar,world,zombie,bulletsline,hearts,timer)
         game.start()
+        waiter = 0
     }
 }
 
