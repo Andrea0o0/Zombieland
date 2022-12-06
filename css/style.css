@@ -14,8 +14,8 @@
 #game-page,
 #lose-page,
 #win-page {
-  height: 600px;
-  width: 800px;
+  height: 650px;
+  width: 1000px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,13 +54,13 @@
 
 #killer_Andrea,#killer_Sally{
   margin: 0px 30px 50px 30px;
-  height: 160px;
+  height: 180px;
   border: 0px;
 }
 
 #killer_Andrea_image,#killer_Sally_image{
-  height: 150px;
-  width: 250px;
+  height: 180px;
+  width: 300px;
 }
 
 /* #killer_Andrea_image:hover,#killer_Sally_image:hover,#background_1_image:hover, #background_2_image:hover, #background_3_image:hover, #background_4_image:hover, #background_5_image:hover, #background_6_image:hover{
@@ -76,15 +76,15 @@
 }
 
 #background_1_image, #background_2_image, #background_3_image, #background_4_image, #background_5_image, #background_6_image,#background_7_image, #background_8_image{
-  width: 150px;
-  height: 80px;
+  width: 250px;
+  height: 100px;
   object-fit: cover;
 }
 
 #background_1,#background_2,#background_3,#background_4,#background_5,#background_6,#background_7,#background_8{
-  margin: 0px 10px 30px 10px;
-  width: 150px;
-  height: 80px;
+  margin: 0px 30px 30px 30px;
+  width: 250px;
+  height: 100px;
   border: 0px;
 }
 

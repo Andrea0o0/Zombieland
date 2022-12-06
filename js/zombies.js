@@ -37,6 +37,13 @@ constructor(x, y, w, h){
     this.height = h
     this.random_index = undefined
 }
+
+_setX(){
+    if(worldImg.src == background5_Image.src){
+        this.y -= 120
+   }
+}
+
 _moveLeft(){
     setInterval(()=> this.x -= 18, 100)
 }

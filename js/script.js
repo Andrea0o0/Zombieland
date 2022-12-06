@@ -34,8 +34,7 @@ const background3_Image = document.getElementById('background_3_image')
 const background4_Image = document.getElementById('background_4_image')
 const background5_Image = document.getElementById('background_5_image')
 const background6_Image = document.getElementById('background_6_image')
-const background7_Image = document.getElementById('background_7_image')
-const background8_Image = document.getElementById('background_8_image')
+
 
 const background1 = document.getElementById('background_1')
 const background2 = document.getElementById('background_2')
@@ -43,8 +42,7 @@ const background3 = document.getElementById('background_3')
 const background4 = document.getElementById('background_4')
 const background5 = document.getElementById('background_5')
 const background6 = document.getElementById('background_6')
-const background7 = document.getElementById('background_7')
-const background8 = document.getElementById('background_8')
+
 
 world = {
     width:background1_Image.naturalWidth
@@ -58,8 +56,6 @@ function to_non_active_Background(){
     background4_Image.classList.replace('active_border','no_active_border')
     background5_Image.classList.replace('active_border','no_active_border')
     background6_Image.classList.replace('active_border','no_active_border')
-    background7_Image.classList.replace('active_border','no_active_border')
-    background8_Image.classList.replace('active_border','no_active_border')
 }
 
 // console.log(backgroundsize.naturalHeight)
@@ -68,7 +64,7 @@ function to_non_active_Background(){
 background1.onclick = function(){
     to_non_active_Background()
     background1_Image.classList.replace('no_active_border','active_border')
-    worldImg.src = "/images/BACKGROUND/background example 1.jpg"
+    worldImg.src = background1_Image.src
     world.width = background1_Image.naturalWidth
 }
 
@@ -105,20 +101,6 @@ background6.onclick = function(){
     background6_Image.classList.replace('no_active_border','active_border')
     worldImg.src = background6_Image.src
     world.width = background6_Image.naturalWidth
-}
-
-background7.onclick = function(){
-    to_non_active_Background()
-    background7_Image.classList.replace('no_active_border','active_border')
-    worldImg.src = background7_Image.src
-    world.width = background7_Image.naturalWidth
-}
-
-background8.onclick = function(){
-    to_non_active_Background()
-    background8_Image.classList.replace('no_active_border','active_border')
-    worldImg.src = background8_Image.src
-    world.width = background8_Image.naturalWidth
 }
 
     //GAME PAGE

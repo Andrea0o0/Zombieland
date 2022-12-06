@@ -1,4 +1,5 @@
 let i = 0
+let zombie_i_Random
 class Game {
     constructor(ctx,avatar,world,zombie,bullets,hearts,timer) {
         this.ctx = ctx
@@ -6,78 +7,98 @@ class Game {
         this.world = new World(0,0,world.width)
         this.zombies = []
         this.howmany_zombies = 0
-        // this.zombie = new Zombie(zombie.x,zombie.y,zombie.width,zombie.height)
         this.bullets = []
         this.bulletsline = bullets
         this.hearts = hearts
         this.timer = timer
-        // Generate new zombies 
-        // this.totalZombies = []
-        // for(let i=0;i<n_zombies.value;i++){
-        //     this.totalZombies.push(Math.ceil(Math.random()*(zombie.length))-1)
-        //     }
+        this.generateInterval = null
+        this.timer_setInterval = 1
+  
     }
 
+    _setInterval(){
+    const timerInterval = setInterval(function() {
+        if(itimer>timer.img.length){
+       clearInterval(timerInterval)
+       gamePage.style = 'display:none'
+       winPage.style = 'display:flex'
+        }
+       else{
+       timerImg.src = timer.img[itimer].src
+       itimer++
+        }
+       },
+       ((timer.img[itimer].seconds)*1000+waiter)/3)
+    }        
+    
     _createZombies(){
-        //Create Zombies
-        // (Math.ceil(Math.random()*(zombie.length))-1)
-        let zombie_i_Random
+        let timetocreate = 0
 
-        zombie_i_Random = Math.ceil(Math.random()*(zombie.length))-1
+        this.generateInterval = setInterval(() => {  
+            if(timetocreate<this.timer_setInterval){
+                timetocreate +=200
+            }
+            else{
+                if(itimer<timer.img.length*0.6){
+                    zombie_i_Random = Math.floor(Math.random()*(zombie.length-2))
+                }
+                else if(itimer<timer.img.length*0.85){
+                    zombie_i_Random = Math.floor(Math.random()*(zombie.length-1))
+                }
+                else{
+                    zombie_i_Random = Math.floor(Math.random()*(zombie.length-2))+2
+                }
 
-        if(zombie_i_Random >= zombie.length){
-        zombie_i_Random=0
-    }
+            
+                const newZombie = new Zombie(
+                    zombie[zombie_i_Random].x,
+                    zombie[zombie_i_Random].y,
+                    zombie[zombie_i_Random].width,
+                    zombie[zombie_i_Random].height)
+                    
+                newZombie._setX()
+                newZombie._moveLeft()
+                newZombie._select_Random_Index(zombie_i_Random)
+                this.zombies.push(newZombie)
+                // console.log(this.zombies)
+                timetocreate=0
+            }
+    },200)      
+    
 
+        const timerIntervalZombies = setInterval(() => {
+            let min_speed = 9000
+            let max_speed = 4000
+            this.timer_setInterval = min_speed-((min_speed-max_speed)*(itimer/(timer.img.length-1)))
+            console.log(Math.floor(Math.random()*(zombie.length-1)))
+            },0)
+         
+            zombie_i_Random = Math.ceil(Math.random()*(zombie.length-2))
         const newZombie = new Zombie(
             zombie[zombie_i_Random].x,
             zombie[zombie_i_Random].y,
             zombie[zombie_i_Random].width,
             zombie[zombie_i_Random].height)
-
+   
+        newZombie._setX()
         newZombie._moveLeft()
         newZombie._select_Random_Index(zombie_i_Random)
         this.zombies.push(newZombie)
-        zombie_i_Random++
-        
-        this.generateInterval = setInterval(() => {
-    
-        zombie_i_Random = Math.ceil(Math.random()*(zombie.length))-1
 
-            if(zombie_i_Random >= zombie.length){
-            zombie_i_Random=0
         }
-
-            const newZombie = new Zombie(
-                zombie[zombie_i_Random].x,
-                zombie[zombie_i_Random].y,
-                zombie[zombie_i_Random].width,
-                zombie[zombie_i_Random].height)
-
-            newZombie._moveLeft()
-            newZombie._select_Random_Index(zombie_i_Random)
-            this.zombies.push(newZombie)
-            zombie_i_Random++
-        },7000)
-        
-    }
-
 
     _drawZombies(){
         this.zombies.forEach((elem,i) => {
             if(iZombies<=zombie[elem.random_index].img.length-1){
                 zombieImg.src = zombie[elem.random_index].img[Math.round(iZombies)]
-                iZombies += 0.1
+                iZombies += 0.05
             }
             else{
                 iZombies = 0
             }
-            console.log(Math.round(iZombies))
             this.ctx.drawImage(zombieImg,elem.x,elem.y,elem.width,elem.height)
         })
     }
-
-
     
     _assignControls(){
     document.addEventListener('keydown',(event) => {
@@ -184,6 +205,22 @@ class Game {
         }
     }
 
+    _define_X_background(){
+        if(worldImg.src == background5_Image.src){
+            this.avatar.y -= 120
+       }
+        
+    }
+
+    // _backgrounds_opacity(){
+    //     if(worldImg.src == background2_Image.src){
+    //         const background_Opacity_Img = new Image()
+    //         background_Opacity_Img.src = '/images/KILLERS AVATAR/ANDREA/RUN/LEFT/1.png'
+    //         this.ctx.globalAlpha = 0.4
+    //         this.ctx.drawImage(background_Opacity_Img,0,0)
+    //     }
+    // }
+
     _clean() {
         this.ctx.clearRect(0, 0, 800, 600)
       }
@@ -194,17 +231,14 @@ class Game {
             setInterval(this.avatar.moveUp(),100)
         }
         this._clean()
-        // this._createZombies()
         this._drawAvatar()
         this._drawZombies()
         this._checkCollisions()
         this._drawTools()
         this._drawTimer()
         this._drawBullets()
-        if(this.avatar.x+this.avatar.width>=canvasGame.width){
-            gamePage.style = 'display:none'
-            winPage.style = 'display:flex'
-        }
+        
+        // this._backgrounds_opacity()
         // window.requestAnimationFrame(this._update.bind(this))
         
     }
@@ -219,24 +253,15 @@ class Game {
     start() {
     this._assignControls()
     this._update()
+    this._setInterval()
     this._createZombies()
+    this._define_X_background()
     
     }
 }
 
 
-        const timerInterval = setInterval(function() {
-             if(itimer>timer.img.length){
-            clearInterval(timerInterval)
-            gamePage.style = 'display:none'
-            winPage.style = 'display:flex'
-             }
-            else{
-            timerImg.src = timer.img[itimer].src
-            itimer++
-             }
-            },
-            ((timer.img[itimer].seconds)*1000+waiter)/3)
+        
 
        
           
