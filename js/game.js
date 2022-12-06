@@ -1,17 +1,37 @@
-let i = 0
-let zombie_i_Random
 class Game {
-    constructor(ctx,avatar,world,zombie,bullets,hearts,timer) {
+    constructor(ctx,avatar,world,bullets,hearts,timer) {
+        //CTX
         this.ctx = ctx
+
+        //AVATAR
         this.avatar = new Player(avatar.name,avatar.x,avatar.y,avatar.width,avatar.height)
+
+        //WORLD
         this.world = new World(0,0,world.width)
+
+        //ZOMBIES
         this.zombies = []
-        this.howmany_zombies = 0
+        //INDEX ZOMBIE RANDOM
+        this.zombie_i_Random = undefined
+        //INDEX ZOMBIES IMAGES
+        this.iZombies = 0
+
+        //BULLETS
         this.bullets = []
+        //POSITION BULLET
+        this.position = '' 
+        
+        //TOOLS
+        //BULLET LINE
         this.bulletsline = bullets
+        //HEARTS LINE
         this.hearts = hearts
+        //TIMER
         this.timer = timer
         this.timer_setInterval = 1
+        // INDEX IMG TIMER
+        this.itimer = 0 
+        
 
         //SETINTERVALS
         this.generateInterval = null
@@ -19,18 +39,19 @@ class Game {
         this.timerInterval = null
         this.move_Up_avatar = null
 
+        //STATUS - WIN || LOSE - AVATAR
         this.status_avatar = false
   
     }
 
     _setInterval(){
     this.timerInterval = setInterval(() => {
-        if(itimer>timer.img.length-1){
+        if(this.itimer>timer.img.length-1){
             this.status_avatar = 'winner'
         }
        else{
-       timerImg.src = timer.img[itimer].src
-       itimer++
+       timerImg.src = timer.img[this.itimer].src
+       this.itimer++
         }
     },
        1000)
@@ -44,26 +65,26 @@ class Game {
                 timetocreate +=200
             }
             else{
-                if(itimer<timer.img.length*0.6){
-                    zombie_i_Random = Math.floor(Math.random()*(zombie.length-2))
+                if(this.itimer<timer.img.length*0.5){
+                    this.zombie_i_Random = Math.floor(Math.random()*(zombie.length-2))
                 }
-                else if(itimer<timer.img.length*0.85){
-                    zombie_i_Random = Math.floor(Math.random()*(zombie.length-1))
+                else if(this.itimer<timer.img.length*0.7){
+                    this.zombie_i_Random = Math.floor(Math.random()*(zombie.length-1))
                 }
                 else{
-                    zombie_i_Random = Math.floor(Math.random()*(zombie.length-2))+2
+                    this.zombie_i_Random = Math.floor(Math.random()*(zombie.length-2))+2
                 }
 
             
                 const newZombie = new Zombie(
-                    zombie[zombie_i_Random].x,
-                    zombie[zombie_i_Random].y,
-                    zombie[zombie_i_Random].width,
-                    zombie[zombie_i_Random].height)
+                    zombie[this.zombie_i_Random].x,
+                    zombie[this.zombie_i_Random].y,
+                    zombie[this.zombie_i_Random].width,
+                    zombie[this.zombie_i_Random].height)
                     
                 newZombie._setX()
                 newZombie._moveLeft()
-                newZombie._select_Random_Index(zombie_i_Random)
+                newZombie._select_Random_Index(this.zombie_i_Random)
                 this.zombies.push(newZombie)
                 // console.log(this.zombies)
                 timetocreate=0
@@ -74,31 +95,31 @@ class Game {
         this.timerIntervalZombies = setInterval(() => {
             let min_speed = 9000
             let max_speed = 4000
-            this.timer_setInterval = min_speed-((min_speed-max_speed)*(itimer/(timer.img.length-1)))
+            this.timer_setInterval = min_speed-((min_speed-max_speed)*(this.itimer/(timer.img.length-1)))
             },0)
          
-            zombie_i_Random = Math.floor(Math.random()*(zombie.length-2))
+            this.zombie_i_Random = Math.floor(Math.random()*(zombie.length-2))
         const newZombie = new Zombie(
-            zombie[zombie_i_Random].x,
-            zombie[zombie_i_Random].y,
-            zombie[zombie_i_Random].width,
-            zombie[zombie_i_Random].height)
+            zombie[this.zombie_i_Random].x,
+            zombie[this.zombie_i_Random].y,
+            zombie[this.zombie_i_Random].width,
+            zombie[this.zombie_i_Random].height)
    
         newZombie._setX()
         newZombie._moveLeft()
-        newZombie._select_Random_Index(zombie_i_Random)
+        newZombie._select_Random_Index(this.zombie_i_Random)
         this.zombies.push(newZombie)
 
         }
 
     _drawZombies(){
         this.zombies.forEach((elem,i) => {
-            if(iZombies<=zombie[elem.random_index].img.length-1){
-                zombieImg.src = zombie[elem.random_index].img[Math.round(iZombies)]
-                iZombies += 0.05
+            if(this.iZombies<=zombie[elem.random_index].img.length-1){
+                zombieImg.src = zombie[elem.random_index].img[Math.round(this.iZombies)]
+                this.iZombies += 0.03
             }
             else{
-                iZombies = 0
+                this.iZombies = 0
             }
             this.ctx.drawImage(zombieImg,elem.x,elem.y,elem.width,elem.height)
         })
@@ -109,33 +130,36 @@ class Game {
         switch (event.code){
             case 'ArrowRight':
                 this.avatar.moveRight()
-                movement += 'R'
-                avatar_type += 'R'
-                position += movement
+                this.avatar.movement += 'R'
+                this.avatar.img_type += 'R'
+                this.position += this.avatar.movement
                 break
             case 'ArrowLeft':
                 this.avatar.moveLeft()
-                movement += 'L'
-                avatar_type += 'R'
-                position += movement
+                this.avatar.movement += 'L'
+                this.avatar.img_type += 'R'
+                this.position += this.avatar.movement
                 break
             case 'Space':
                 this.avatar.moveUp()
-                movement =  'U'
-                avatar_type += 'S'
+                this.avatar.movement =  'U'
+                this.avatar.img_type += 'S'
                 break
             case 'Enter':
                 if(this.avatar.bullets_shoots>0){
                 const newbullet = new Bullet()
-                newbullet._direction()
+                newbullet._direction(this.position)
+                if(this.position.length>50){
+                    this.position.slice(this.position.length-50,this.position.length)
+                    }
                 newbullet._position(this.avatar)
                 this.bullets.push(newbullet)
                 this.avatar.bullets_shoots--
-                avatar_type += 'S'
+                this.avatar.img_type += 'S'
                 }
                 break
             default:
-                avatar_type += 'S'
+                this.avatar.img_type += 'S'
                 break
             }
         })
@@ -196,13 +220,11 @@ class Game {
 
     _drawAvatar() {
         this.ctx.drawImage(this.world.image,0,0,canvasGame.width,canvasGame.height)
-  
-        // console.log(this.avatar.image,i)
 
             this.ctx.drawImage(this.avatar.image,this.avatar.x,this.avatar.y,this.avatar.width,this.avatar.height)
 
-        if(i>=avatar.run_Right.length-1){
-            i=0
+        if(this.avatar.i_image >= avatar.run_Right.length-1){
+            this.avatar.i_image = 0
         }
     }
 
@@ -238,7 +260,7 @@ class Game {
 
     _update() {
         if(this.status_avatar==false){
-        if(movement.includes('U')){
+        if(this.avatar.movement.includes('U')){
             this.move_Up_avatar = setInterval(this.avatar.moveUp(),100)
         }
         this._clean()
