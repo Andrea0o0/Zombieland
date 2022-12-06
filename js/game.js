@@ -19,14 +19,14 @@ class Game {
         this.timerInterval = null
         this.move_Up_avatar = null
 
-        this.winner = false
+        this.status_avatar = false
   
     }
 
     _setInterval(){
     this.timerInterval = setInterval(() => {
         if(itimer>timer.img.length-1){
-            this.winner = true
+            this.status_avatar = 'winner'
         }
        else{
        timerImg.src = timer.img[itimer].src
@@ -149,8 +149,7 @@ class Game {
                 this.avatar.lives --
             }
             else{
-            this._clear_Intervals()
-            this._gameOver()
+            this.status_avatar = 'loser'
             }
 
             
@@ -224,7 +223,7 @@ class Game {
     _win(){
         let win_page = new Image()
         win_page.src = '/images/TOOLS/WIN_PAGE.png'
-        this.ctx.drawImage(win_page,500,100,900,500)
+        this.ctx.drawImage(win_page,420,100,900,500)
     }
 
     _gameOver() {
@@ -238,7 +237,7 @@ class Game {
       }
 
     _update() {
-        if(this.winner==false){
+        if(this.status_avatar==false){
         if(movement.includes('U')){
             this.move_Up_avatar = setInterval(this.avatar.moveUp(),100)
         }
@@ -251,9 +250,13 @@ class Game {
         this._drawBullets()
         
     }
-    else{
+    else if(this.status_avatar == 'winner') {
         this._clear_Intervals()
         this._win()
+    }
+    else if(this.status_avatar == 'loser') {
+        this._clear_Intervals()
+        this._gameOver()
     }
     window.requestAnimationFrame(() => this._update())
     }
