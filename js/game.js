@@ -11,24 +11,29 @@ class Game {
         this.bulletsline = bullets
         this.hearts = hearts
         this.timer = timer
-        this.generateInterval = null
         this.timer_setInterval = 1
+
+        //SETINTERVALS
+        this.generateInterval = null
+        this.timerIntervalZombies = null
+        this.timerInterval = null
+        this.move_Up_avatar = null
+
+        this.winner = false
   
     }
 
     _setInterval(){
-    const timerInterval = setInterval(function() {
-        if(itimer>timer.img.length){
-       clearInterval(timerInterval)
-       gamePage.style = 'display:none'
-       winPage.style = 'display:flex'
+    this.timerInterval = setInterval(() => {
+        if(itimer>timer.img.length-1){
+            this.winner = true
         }
        else{
        timerImg.src = timer.img[itimer].src
        itimer++
         }
-       },
-       ((timer.img[itimer].seconds)*1000+waiter)/3)
+    },
+       1000)
     }        
     
     _createZombies(){
@@ -66,14 +71,13 @@ class Game {
     },200)      
     
 
-        const timerIntervalZombies = setInterval(() => {
+        this.timerIntervalZombies = setInterval(() => {
             let min_speed = 9000
             let max_speed = 4000
             this.timer_setInterval = min_speed-((min_speed-max_speed)*(itimer/(timer.img.length-1)))
-            console.log(Math.floor(Math.random()*(zombie.length-1)))
             },0)
          
-            zombie_i_Random = Math.ceil(Math.random()*(zombie.length-2))
+            zombie_i_Random = Math.floor(Math.random()*(zombie.length-2))
         const newZombie = new Zombie(
             zombie[zombie_i_Random].x,
             zombie[zombie_i_Random].y,
@@ -145,12 +149,12 @@ class Game {
                 this.avatar.lives --
             }
             else{
-                console.log('dead')
-
+            this._clear_Intervals()
+            this._gameOver()
             }
+
+            
         }
-            // gamePage.style = 'display:none'
-            // losePage.style = 'display:flex'
         
         this.bullets.forEach((bullet) => {
         if((zombiee.x<bullet.x + bullet.width&&bullet.x<zombiee.x + zombiee.width)&&(zombiee.y<bullet.y + bullet.height&&bullet.y<zombiee.y + zombiee.height)){
@@ -158,8 +162,6 @@ class Game {
             bullet.y -= canvasGame.height
         }})
     })
-            
-
         }
 
     _drawBullets(){
@@ -212,23 +214,33 @@ class Game {
         
     }
 
-    // _backgrounds_opacity(){
-    //     if(worldImg.src == background2_Image.src){
-    //         const background_Opacity_Img = new Image()
-    //         background_Opacity_Img.src = '/images/KILLERS AVATAR/ANDREA/RUN/LEFT/1.png'
-    //         this.ctx.globalAlpha = 0.4
-    //         this.ctx.drawImage(background_Opacity_Img,0,0)
-    //     }
-    // }
+    _clear_Intervals(){
+        clearInterval(this.generateInterval)
+        clearInterval(this.timerInterval)
+        clearInterval(this.timerIntervalZombies)
+        clearInterval(this.move_Up_avatar)
+    }
+
+    _win(){
+        let win_page = new Image()
+        win_page.src = '/images/TOOLS/WIN_PAGE.png'
+        this.ctx.drawImage(win_page,500,100,900,500)
+    }
+
+    _gameOver() {
+        let game_Over = new Image()
+            game_Over.src = '/images/TOOLS/GAME_OVER.png'
+            this.ctx.drawImage(game_Over,400,0,900,600)
+      }
 
     _clean() {
         this.ctx.clearRect(0, 0, 800, 600)
       }
 
     _update() {
-        if(this.avatar.lives>3){
+        if(this.winner==false){
         if(movement.includes('U')){
-            setInterval(this.avatar.moveUp(),100)
+            this.move_Up_avatar = setInterval(this.avatar.moveUp(),100)
         }
         this._clean()
         this._drawAvatar()
@@ -238,14 +250,10 @@ class Game {
         this._drawTimer()
         this._drawBullets()
         
-        // this._backgrounds_opacity()
-        // window.requestAnimationFrame(this._update.bind(this))
-        
     }
     else{
-        let game_Over = new Image()
-        game_Over.src = '/images/TOOLS/GAME_OVER.png'
-        this.ctx.drawImage(game_Over,500,0,900,600)
+        this._clear_Intervals()
+        this._win()
     }
     window.requestAnimationFrame(() => this._update())
     }
