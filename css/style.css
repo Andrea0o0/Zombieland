@@ -1,4 +1,4 @@
-  #avatar-page,#canvas-Game {
+  #avatar-page,#canvas-Game,body {
   background-color: skyblue;
 }
 
@@ -8,22 +8,37 @@
 }
 /* Basic styles, change according to your style */
 
+#start-game{
+    padding: 5px 0px 5px 0px;
+    width: 1200px;
+    margin: 35px 0px 0px 50px;
+    align-items: center;
+    font-family: 'Montserrat';
+    font-size:40px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(81, 127, 212);
+    border: 3px solid white;
+    border-radius: 40px;
+}
+
+
 #start-page,
 #lose-page,
 #avatar-page,
 #game-page,
 #lose-page,
 #win-page {
-  height: 650px;
-  width: 1000px;
+  height: 850px;
+  width: 1300px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
   margin: 0 auto;
-  border: 1px solid black;
-  margin-top: 100px;
+  border: 0px;
+  margin-top: 50px;
 }
 
 #lose-page,
@@ -49,18 +64,19 @@
 #killer_Andrea,#killer_Sally,#killer_Andrea_image,#killer_Sally_image,
 #background_1_image, #background_2_image, #background_3_image, #background_4_image, #background_5_image, #background_6_image, #background_7_image, #background_8_image,#background_1,#background_2,#background_3,#background_4,#background_5,#background_6,#background_7,#background_8{ 
 
-  border-radius: 50px;
+  border-radius: 70px;
 }
 
 #killer_Andrea,#killer_Sally{
   margin: 0px 30px 50px 30px;
-  height: 180px;
+  height: 260px;
+  width: 400px;
   border: 0px;
 }
 
 #killer_Andrea_image,#killer_Sally_image{
-  height: 180px;
-  width: 300px;
+  height: 250px;
+  width: 390px;
 }
 
 /* #killer_Andrea_image:hover,#killer_Sally_image:hover,#background_1_image:hover, #background_2_image:hover, #background_3_image:hover, #background_4_image:hover, #background_5_image:hover, #background_6_image:hover{
@@ -68,7 +84,7 @@
 } */
 
 .active_border{
-  border: 5px solid rgb(46, 95, 185);
+  border: 7px solid rgb(81, 127, 212);
 }
 
 .no_active_border{
@@ -76,15 +92,15 @@
 }
 
 #background_1_image, #background_2_image, #background_3_image, #background_4_image, #background_5_image, #background_6_image,#background_7_image, #background_8_image{
-  width: 250px;
-  height: 100px;
+  width: 350px;
+  height: 180px;
   object-fit: cover;
 }
 
 #background_1,#background_2,#background_3,#background_4,#background_5,#background_6,#background_7,#background_8{
-  margin: 0px 30px 30px 30px;
-  width: 250px;
-  height: 100px;
+  margin: 0px 50px 30px 50px;
+  width: 300px;
+  height: 180px;
   border: 0px;
 }
 
