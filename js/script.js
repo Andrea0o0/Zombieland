@@ -4,14 +4,14 @@ function to_non_active_Avatar(){
 }
 
 buttonKillerAndrea.onclick = function(){
-    avatarImg.src = borderKillerAndrea.src
+    avatarImg.src = killerAndrea.run_Right[0]
     avatar = killerAndrea
     to_non_active_Avatar()
     borderKillerAndrea.classList.replace('no_active_border','active_border')
 }
 
 buttonKillerSally.onclick = function(){
-    avatarImg.src = borderKillerSally.src
+    avatarImg.src = killerSally.run_Right[0]
     avatar = killerSally
     to_non_active_Avatar()
     borderKillerSally.classList.replace('no_active_border','active_border')
@@ -88,12 +88,4 @@ window.onload = function(){
         game.start()
     }
 }
-
-
-
-
-
-
-
-
 

@@ -51,7 +51,9 @@ class Game {
         }
        else{
        timerImg.src = timer.img[this.itimer].src
-       this.itimer++
+        console.log(this.itimer)
+        this.itimer++
+
         }
     },
        1000)
@@ -157,6 +159,13 @@ class Game {
                 this.avatar.bullets_shoots--
                 this.avatar.img_type += 'S'
                 }
+                if(this.status_avatar == 'winner'||this.status_avatar == 'loser'){
+                    console.log('itworks')
+                    this._RestartGame()
+                    gamePage.style = 'display:none'
+                    canvasGame.classList.add('hidden')
+                    startPage.style = 'display:flex'
+                }
                 break
             default:
                 this.avatar.img_type += 'S'
@@ -169,23 +178,21 @@ class Game {
         this.zombies.forEach((zombiee) => {
         if((zombiee.x<this.avatar.x + this.avatar.width-10&&this.avatar.x<zombiee.x + zombiee.width-10)&&(zombiee.y<this.avatar.y + this.avatar.height-10&&this.avatar.y<zombiee.y + zombiee.height-10))
         {
-            if(this.avatar.lives > 0){
+            if(this.avatar.lives > 3){
                 this.avatar.lives --
             }
             else{
             this.status_avatar = 'loser'
             }
-
             
         }
-        
-        this.bullets.forEach((bullet) => {
-        if((zombiee.x<bullet.x + bullet.width&&bullet.x<zombiee.x + zombiee.width)&&(zombiee.y<bullet.y + bullet.height&&bullet.y<zombiee.y + zombiee.height)){
-            zombiee.y -= canvasGame.height
-            bullet.y -= canvasGame.height
-        }})
-    })
-        }
+            this.bullets.forEach((bullet) => {
+            if((zombiee.x<bullet.x + bullet.width&&bullet.x<zombiee.x + zombiee.width)&&(zombiee.y<bullet.y + bullet.height&&bullet.y<zombiee.y + zombiee.height)){
+                zombiee.y -= canvasGame.height
+                bullet.y -= canvasGame.height
+            }})
+        })
+    }
 
     _drawBullets(){
         this.bullets.forEach((bullet) => {
@@ -220,14 +227,59 @@ class Game {
 
     _drawAvatar() {
         this.ctx.drawImage(this.world.image,0,0,canvasGame.width,canvasGame.height)
-
-            this.ctx.drawImage(this.avatar.image,this.avatar.x,this.avatar.y,this.avatar.width,this.avatar.height)
-
+        
         if(this.avatar.i_image >= avatar.run_Right.length-1){
             this.avatar.i_image = 0
         }
+
+            this.ctx.drawImage(this.avatar.image,this.avatar.x,this.avatar.y,this.avatar.width,this.avatar.height)
+            
     }
 
+    _RestartGame(){
+        //AVATAR
+        this.avatar = new Player(avatar.name,avatar.x,avatar.y,avatar.width,avatar.height)
+
+            //INDEX Y FOR GRAVITY
+            this.avatar.index_gravity = 0
+            //MOVEMENTS (LEFT,RIGHT,UP)
+            this.avatar.movement = ''
+            //STATUS MOVEMENT (STATIC,RUN)
+            this.avatar.img_type = 'S'
+            //INDEX IMG STATUS
+            this.avatar.i_image = 0
+            this.avatar.lives = 100
+            this.avatar.bullets_shoots = 10
+
+        //WORLD
+        this.world = new World(0,0,world.width)
+
+        //ZOMBIES
+        this.zombies = []
+        //INDEX ZOMBIES IMAGES
+        this.iZombies = 0
+
+        //BULLETS
+        this.bullets = []
+        //POSITION BULLET
+        this.position = '' 
+        
+        this.timer_setInterval = 1
+        // INDEX IMG TIMER
+        this.itimer = 0 
+
+        //SETINTERVALS
+        this.generateInterval = null
+        this.timerIntervalZombies = null
+        this.timerInterval = null
+        this.move_Up_avatar = null
+
+        //STATUS - WIN || LOSE - AVATAR
+        this.status_avatar = false     
+        
+    }
+
+  
     _define_X_background(){
         if(worldImg.src == background5_Image.src){
             this.avatar.y -= 120
@@ -244,14 +296,14 @@ class Game {
 
     _win(){
         let win_page = new Image()
-        win_page.src = '/images/TOOLS/WIN_PAGE.png'
+        win_page.src = '/images/TOOLS/WIN_PAGE.svg'
         this.ctx.drawImage(win_page,420,100,900,500)
     }
 
     _gameOver() {
         let game_Over = new Image()
-            game_Over.src = '/images/TOOLS/GAME_OVER.png'
-            this.ctx.drawImage(game_Over,400,0,900,600)
+            game_Over.src = '/images/TOOLS/GAME_OVER.svg'
+            this.ctx.drawImage(game_Over,450,0,800,600)
       }
 
     _clean() {
@@ -264,12 +316,12 @@ class Game {
             this.move_Up_avatar = setInterval(this.avatar.moveUp(),100)
         }
         this._clean()
+        this._checkCollisions()
         this._drawAvatar()
         this._drawZombies()
-        this._checkCollisions()
         this._drawTools()
         this._drawTimer()
-        this._drawBullets()
+        this._drawBullets() 
         
     }
     else if(this.status_avatar == 'winner') {
@@ -292,15 +344,3 @@ class Game {
     
     }
 }
-
-
-        
-
-       
-          
- 
-
-  
-
-
-

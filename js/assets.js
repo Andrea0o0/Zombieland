@@ -142,7 +142,7 @@ worldImg.src = background1_Image.src
 
 //PREDETERMINED AVATAR
 avatar = killerAndrea
-avatarImg.src = borderKillerAndrea.src
+avatarImg.src = killerAndrea.run_Right[0]
 
 
 //ZOMBIES
@@ -150,7 +150,7 @@ const zombieImg = new Image()
 const zombie = [
     {
         name:"WalkingZombie",
-        x:1450,
+        x:1790,
         y:650-210,
         width:140,
         height:180,
@@ -167,7 +167,7 @@ const zombie = [
     },
     {
         name:"WalkingZombie2",
-        x:1450,
+        x:1790,
         y:650-210,
         width:140,
         height:180,
@@ -184,7 +184,7 @@ const zombie = [
     },
     {
         name:"DogZombie",
-        x:1450,
+        x:1790,
         y:650-210,
         width:300,
         height:180,
@@ -202,7 +202,7 @@ const zombie = [
     },
     {
         name:"BigZombie",
-        x:1450,
+        x:1790,
         y:650-410,
         width:450,
         height:380,
