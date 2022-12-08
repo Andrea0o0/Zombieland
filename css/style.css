@@ -49,18 +49,23 @@
 }
 
 
-#start-game{
+#start-game,#start-landing_page{
     padding: 5px 0px 5px 0px;
     width: 1200px;
     margin: 35px 0px 0px 50px;
     align-items: center;
-    font-family: 'Montserrat';
-    font-size:40px;
-    font-weight: bold;
-    color: white;
-    background-color: rgb(81, 127, 212);
-    border: 3px solid white;
     border-radius: 40px;
+}
+
+#start-game{
+background-color: rgb(81, 127, 212);
+color: white;
+border: 3px solid white;
+}
+
+#start-landing_page{
+  background-color: #954415;
+  border: 3px solid #954415;
 }
 
 
