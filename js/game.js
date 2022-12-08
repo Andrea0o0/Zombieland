@@ -51,7 +51,6 @@ class Game {
         }
        else{
        timerImg.src = timer.img[this.itimer].src
-        console.log(this.itimer)
         this.itimer++
 
         }
@@ -88,7 +87,6 @@ class Game {
                 newZombie._moveLeft()
                 newZombie._select_Random_Index(this.zombie_i_Random)
                 this.zombies.push(newZombie)
-                // console.log(this.zombies)
                 timetocreate=0
             }
     },200)      
@@ -160,11 +158,10 @@ class Game {
                 this.avatar.img_type += 'S'
                 }
                 if(this.status_avatar == 'winner'||this.status_avatar == 'loser'){
-                    console.log('itworks')
-                    this._RestartGame()
                     gamePage.style = 'display:none'
                     canvasGame.classList.add('hidden')
                     startPage.style = 'display:flex'
+                    this._RestartGame()
                 }
                 break
             default:
@@ -237,6 +234,7 @@ class Game {
     }
 
     _RestartGame(){
+            
         //AVATAR
         this.avatar = new Player(avatar.name,avatar.x,avatar.y,avatar.width,avatar.height)
 

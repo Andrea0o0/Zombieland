@@ -2,11 +2,52 @@
   background-color: skyblue;
 }
 
+/* Basic styles, change according to your style */
 * {
+  box-sizing: border-box; 
   margin: 0;
   padding: 0;
 }
-/* Basic styles, change according to your style */
+
+.title_and_subtitle,.worlds{
+  margin-bottom: 20px;
+}
+
+.avatars{
+  margin-bottom: 40px;
+}
+
+.left_column {
+  float: left;
+  width: 25%;
+  padding-right: 5px;
+}
+.right_column {
+  float: left;
+  width: 75%;
+  padding-right: 5px;
+}
+
+.walking_Dead,.dog_Zombies,.big_Zombie{
+    float: left;
+    width: 33.3333333333%;
+    padding-right: 5px;
+}
+
+.fila::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.world_Instructions{
+  width: 300px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 40px;
+  margin: 0px 10px 20px 10px;
+}
+
 
 #start-game{
     padding: 5px 0px 5px 0px;
@@ -29,7 +70,7 @@
 #game-page,
 #lose-page,
 #win-page {
-  height: 850px;
+  height: 1400px;
   width: 1300px;
   display: flex;
   justify-content: center;
