@@ -14,17 +14,17 @@
 }
 
 .avatars{
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .left_column {
   float: left;
-  width: 25%;
+  width: 20%;
   padding-right: 5px;
 }
 .right_column {
   float: left;
-  width: 75%;
+  width: 80%;
   padding-right: 5px;
 }
 
@@ -34,37 +34,28 @@
     padding-right: 5px;
 }
 
-.fila::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
 .world_Instructions{
-  width: 300px;
-  height: 100px;
+  width: 180px;
+  height: 80px;
   object-fit: cover;
   border-radius: 40px;
   margin: 0px 10px 20px 10px;
 }
 
+.first_column,.second_column{
+  float: left;
+  width: 50%;
+  padding-right: 5px;
+}
+
 
 #start-game,#start-landing_page{
     padding: 5px 0px 5px 0px;
-    width: 1200px;
+    width: 1600px;
     margin: 35px 0px 0px 50px;
     align-items: center;
     border-radius: 40px;
-}
-
-#start-game{
-background-color: rgb(81, 127, 212);
-color: white;
-border: 3px solid white;
-}
-
-#start-landing_page{
-  background-color: #954415;
+    background-color: #954415;
   border: 3px solid #954415;
 }
 
@@ -130,7 +121,7 @@ border: 3px solid white;
 } */
 
 .active_border{
-  border: 7px solid rgb(81, 127, 212);
+  border: 7px solid #954415;
 }
 
 .no_active_border{
