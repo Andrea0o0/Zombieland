@@ -66,8 +66,8 @@
 #game-page,
 #lose-page,
 #win-page {
-  height: 1400px;
-  width: 1300px;
+  height: 900px;
+  width: 1400px;
   display: flex;
   justify-content: center;
   align-items: center;
