@@ -5,7 +5,7 @@
 
 ## Description
 
-Save people from zombies, without crashing with a Zombie
+Your mission is to survive 2 minutes
 
 ## User stories MVP
 
@@ -36,5 +36,5 @@ Save people from zombies, without crashing with a Zombie
 
 <!-- When you finish, add these links and commit -->
 
-- [Presentation slides]()
+- [Presentation slides](https://slides.com/andreagarcia-11/deck/fullscreen)
 - [Deployed game](http://127.0.0.1:5500/html/index.html)
