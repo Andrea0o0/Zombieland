@@ -19,16 +19,13 @@ buttonKillerSally.onclick = function(){
 
 
 function to_non_active_Background(){
-    background1_Image.classList.replace('active_border','no_active_border')
+    background1_Image.classList.replace('active_border','no_active_border')         
     background2_Image.classList.replace('active_border','no_active_border')
     background3_Image.classList.replace('active_border','no_active_border')
     background4_Image.classList.replace('active_border','no_active_border')
     background5_Image.classList.replace('active_border','no_active_border')
     background6_Image.classList.replace('active_border','no_active_border')
 }
-
-// console.log(backgroundsize.naturalHeight)
-// console.log(backgroundsize.naturalWidth)
 
 background1.onclick = function(){
     to_non_active_Background()

@@ -34,7 +34,6 @@ class Player {
         }
 
         avatarImg.src = avatar.run_Right[this.i_image]
-        // console.log('runRight',this.i_image)
         this.i_image++
     }
 
@@ -49,7 +48,6 @@ class Player {
             this.x = canvasGame.width
         }
         avatarImg.src = avatar.run_Left[this.i_image]
-        // console.log('runLeft',this.i_image)
         this.i_image++
     } 
 
@@ -89,13 +87,11 @@ class Player {
             else if(this.movement.includes('U') && this.movement.includes('R')){
                 this.x += 10
                 avatarImg.src = avatar.static_Right[0]
-                // console.log('staticRight')
             }
             
             else if(this.movement.includes('U') && this.movement.includes('L')){
                 this.x -= 10
                 avatarImg.src = avatar.static_Left[0]
-                // console.log('staticLeft')
             }
 
         this.y += yGravity[this.index_gravity]
