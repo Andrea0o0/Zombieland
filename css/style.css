@@ -116,10 +116,6 @@
   width: 390px;
 }
 
-/* #killer_Andrea_image:hover,#killer_Sally_image:hover,#background_1_image:hover, #background_2_image:hover, #background_3_image:hover, #background_4_image:hover, #background_5_image:hover, #background_6_image:hover{
-  border: 5px solid rgb(46, 95, 185);
-} */
-
 .active_border{
   border: 7px solid #954415;
 }
