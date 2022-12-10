@@ -36,5 +36,5 @@ Your mission is to survive 2 minutes
 
 <!-- When you finish, add these links and commit -->
 
-- [Presentation slides]([/html/index.html"](https://slides.com/andreagarcia-11/deck/fullscreen))
+- [Presentation slides](https://slides.com/andreagarcia-11/deck/fullscreen)
 - [Deployed game](http://127.0.0.1:5500/html/index.html)
