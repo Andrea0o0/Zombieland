@@ -203,7 +203,7 @@ class Game {
             heartsImg.src = this.hearts.img[Math.round(this.avatar.lives*0.1)-1]
         }
         else{
-            heartsImg.src = '/images/TOOLS/EMPTY.png'
+            heartsImg.src = './images/TOOLS/EMPTY.png'
         }
         //DRAW LIVES LINE
         this.ctx.drawImage(heartsImg,this.hearts.x,this.hearts.y,this.hearts.width,this.hearts.height)
@@ -213,7 +213,7 @@ class Game {
             bulletslineImg.src = this.bulletsline.img[this.avatar.bullets_shoots-1]
         }
         else{
-            bulletslineImg.src = '/images/TOOLS/EMPTY.png'
+            bulletslineImg.src = './images/TOOLS/EMPTY.png'
         }
         this.ctx.drawImage(bulletslineImg,this.bulletsline.x,this.bulletsline.y,this.bulletsline.width,this.bulletsline.height)
     }
@@ -294,13 +294,13 @@ class Game {
 
     _win(){
         let win_page = new Image()
-        win_page.src = '/images/TOOLS/WIN_PAGE.svg'
-        this.ctx.drawImage(win_page,420,100,900,500)
+        win_page.src = './images/TOOLS/WIN_PAGE.svg'
+        this.ctx.drawImage(win_page,480,80,780,520)
     }
 
     _gameOver() {
         let game_Over = new Image()
-            game_Over.src = '/images/TOOLS/GAME_OVER.svg'
+            game_Over.src = './images/TOOLS/GAME_OVER.svg'
             this.ctx.drawImage(game_Over,450,0,800,600)
       }
 
